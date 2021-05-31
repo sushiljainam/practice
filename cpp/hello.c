@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+// {
+// 	"cmd": ["gcc", "$file_name", "-o", "${file_base_name}", "&&", "./${file_base_name}"],
+// 	"file_patterns": ["*.c"]
+// }
+
 int main(){
 	printf("hello world \n");
 	for (int i = 0; i < 5; ++i)
