@@ -98,12 +98,23 @@ function letterJsonToMatrix(json) {
 
 function test() {
     const M1 = letterJsonToMatrix(letterJson);
-    for (let i = 0; i < M1.length; i++) {
-        console.log(M1[i].join(''));
-    }
+    // for (let i = 0; i < M1.length; i++) {
+    //     console.log(M1[i].join(''));
+    // }
     const M2 = letterJsonToMatrix(letterJson_S);
-    for (let i = 0; i < M2.length; i++) {
-        console.log(M2[i].join(''));
+    // for (let i = 0; i < M2.length; i++) {
+    //     console.log(M2[i].join(''));
+    // }
+    const M3 = matrixOp(M1)
+        .addMatrixRight(matrixOp.by({
+            width: 3,
+            height: 15,
+            fill: '_',
+        }))
+        .addMatrixRight(M2)
+        .toMatrix();
+    for (let i = 0; i < M3.length; i++) {
+        console.log(M3[i].join(''));
     }
 }
 test();
