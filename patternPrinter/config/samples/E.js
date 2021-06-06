@@ -1,19 +1,4 @@
-const fillWithP = (addItemProps) => Object.assign(
-    {},
-    {
-        type: 'item',
-        fill: 'P',
-    },
-    addItemProps,
-);
-const fillWithZ = (addItemProps) => Object.assign(
-    {},
-    {
-        type: 'item',
-        fill: 'Z',
-    },
-    addItemProps,
-);
+const { fillWithP, fillWithZ } = require('../util');
 
 module.exports = {
     type: 'row',
@@ -39,4 +24,4 @@ module.exports = {
             ],
         }
     ],
-}
+};

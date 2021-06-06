@@ -1,0 +1,53 @@
+{
+    "type": "column",
+    "width": "3*N",
+    "children": [
+        {
+            "type": "item",
+            "fill": "P",
+            "height": "N"
+        },
+        {
+            "type": "row",
+            "height": "N",
+            "children": [
+                {
+                    "type": "item",
+                    "fill": "P",
+                    "width": "N"
+                },
+                {
+                    "type": "item",
+                    "fill": "Z",
+                    "width": "2*N"
+                }
+            ]
+        },
+        {
+            "type": "item",
+            "fill": "P",
+            "height": "N"
+        },
+        {
+            "type": "row",
+            "height": "N",
+            "children": [
+                {
+                    "type": "item",
+                    "fill": "Z",
+                    "width": "2*N"
+                },
+                {
+                    "type": "item",
+                    "fill": "P",
+                    "width": "N"
+                }
+            ]
+        },
+        {
+            "type": "item",
+            "fill": "P",
+            "height": "N"
+        }
+    ]
+}

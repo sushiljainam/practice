@@ -1,6 +1,7 @@
 const matrixOp = require('./matrixOp');
 
 const letterJson = require('./config/samples/E.json');
+const letterJson_S = require('./config/samples/S.json');
 
 function processLengths(length) {
     switch (length) {
@@ -10,6 +11,8 @@ function processLengths(length) {
             return 15;
         case '2*N':
             return 6;
+        case '3*N':
+            return 9;
         case '2*N-2':
             return 4;
         case '2':
@@ -94,9 +97,13 @@ function letterJsonToMatrix(json) {
 }
 
 function test() {
-    const M = letterJsonToMatrix(letterJson);
-    for (let i = 0; i < M.length; i++) {
-        console.log(M[i].join(''));
+    const M1 = letterJsonToMatrix(letterJson);
+    for (let i = 0; i < M1.length; i++) {
+        console.log(M1[i].join(''));
+    }
+    const M2 = letterJsonToMatrix(letterJson_S);
+    for (let i = 0; i < M2.length; i++) {
+        console.log(M2[i].join(''));
     }
 }
 test();
