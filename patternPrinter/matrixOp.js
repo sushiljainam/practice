@@ -54,5 +54,11 @@ function test() {
             .addMatrixDown(main.by({ width: 2, height: 2 }))
             .toMatrix()
     );
+    console.log(
+        main(main.by({ width: 2, height: 2 }))
+            .addMatrixDown(main.by({ width: 2, height: 2 }))
+            .addMatrixRight(main.by({ width: 2, height: 4 }))
+            .toMatrix()
+    );
 }
 test();
