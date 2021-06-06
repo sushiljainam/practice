@@ -8,6 +8,8 @@ function processLengths(length) {
             return 3;
         case '5*N':
             return 15;
+            case '2*N':
+                return 6;
         default:
             return 3;
     }
@@ -36,7 +38,11 @@ function addElementToMatrix(element, matrix) {
                     childElement,
                     { height },
                 ), []);
-            matrixOp(tempResult).addMatrixRight(childMat);
+            // console.log('childMat', childMat);
+            tempResult = matrixOp(tempResult)
+                .addMatrixRight(childMat)
+                .toMatrix();
+            // console.log(tempResult);
         }
         // add tempResult to main matrix
         return matrixOp(matrix).addMatrixRight(tempResult).toMatrix();
