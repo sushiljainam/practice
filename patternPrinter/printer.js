@@ -5,7 +5,7 @@ const letterJson = require('./config/samples/E.json');
 const letterJson_S = require('./config/samples/S.json');
 
 function processLengths(length) {
-    const N = 3; // used inside eval
+    const N = 4; // used inside eval
     return eval(length);
 }
 
@@ -101,22 +101,26 @@ function test_ES_beauty() {
     let M3 = matrixOp(M1)
         .addMatrixRight(matrixOp.by({
             width: 9,
-            height: 15,
+            height: 20,
             fill: '.',
         }))
         .addMatrixRight(M2)
         .toMatrix();
-    M3 = addPadding(M3, { size: 6, fill: '.' });
-    for (let i = 0; i < M3.length; i++) {
-        console.log(M3[i].join(''));
-    }
+    M3 = addPadding(M3, { size: 2, fill: '.' });
+    print2d(M3);
 }
 function test_C() {
     const M1 = letterJsonToMatrix(require('./config/samples/C.json'));
     print2d(M1);
 }
+function test_any(l) {
+    const M1 = letterJsonToMatrix(require(`./config/samples/${l}.json`));
+    print2d(M1);
+}
 function test() {
-    // test_ES_beauty();
-    test_C();
+    test_ES_beauty();
+    // test_C();
+    // test_any('S');
+    // test_any('E');
 }
 test();
