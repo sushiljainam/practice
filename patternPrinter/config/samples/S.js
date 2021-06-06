@@ -25,4 +25,3 @@ module.exports = {
         fillWithP({ height: 'N' }),
     ],
 };
-console.log(JSON.stringify(module.exports));
