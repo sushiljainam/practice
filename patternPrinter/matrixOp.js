@@ -6,6 +6,11 @@ function addMatrixRight(first, second) {
     }
     return third;
 }
+function addMatrixDown(first, second) {
+    // const third = new Array();
+    const third = first.concat(second);
+    return third;
+}
 
 const main = function matrixOp(arr) {
     const returnOp = {};
@@ -13,7 +18,11 @@ const main = function matrixOp(arr) {
     returnOp.addMatrixRight = (second) => {
         returnOp.first = addMatrixRight(returnOp.first, second);
         return returnOp;
-    }
+    };
+    returnOp.addMatrixDown = (second) => {
+        returnOp.first = addMatrixDown(returnOp.first, second);
+        return returnOp;
+    };
     returnOp.toMatrix = () => returnOp.first;
     return returnOp;
 }
@@ -38,6 +47,11 @@ function test() {
     console.log(
         main(main.by({ width: 2, height: 2 }))
             .addMatrixRight(main.by({ width: 2, height: 2 }))
+            .toMatrix()
+    );
+    console.log(
+        main(main.by({ width: 2, height: 2 }))
+            .addMatrixDown(main.by({ width: 2, height: 2 }))
             .toMatrix()
     );
 }
