@@ -5,22 +5,8 @@ const letterJson = require('./config/samples/E.json');
 const letterJson_S = require('./config/samples/S.json');
 
 function processLengths(length) {
-    switch (length) {
-        case 'N':
-            return 3;
-        case '5*N':
-            return 15;
-        case '2*N':
-            return 6;
-        case '3*N':
-            return 9;
-        case '2*N-2':
-            return 4;
-        case '2':
-            return 2;
-        default:
-            return 3;
-    }
+    const N = 3; // used inside eval
+    return eval(length);
 }
 
 function processFillTypes(fill) {
