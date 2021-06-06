@@ -1,6 +1,6 @@
 var fs = require('fs');
 
-var list = ['E', 'S'];
+var list = ['E', 'S', 'C'];
 
 list.forEach(val => {
     const letterCode = require(`./samples/${val}`);

@@ -1,0 +1,32 @@
+{
+    "type": "row",
+    "height": "5*N",
+    "children": [
+        {
+            "type": "item",
+            "fill": "P",
+            "width": "N"
+        },
+        {
+            "type": "column",
+            "width": "2*N",
+            "children": [
+                {
+                    "type": "item",
+                    "fill": "P",
+                    "height": "N"
+                },
+                {
+                    "type": "item",
+                    "fill": "Z",
+                    "height": "3*N"
+                },
+                {
+                    "type": "item",
+                    "fill": "P",
+                    "height": "N"
+                }
+            ]
+        }
+    ]
+}

@@ -77,13 +77,19 @@ function addElementToMatrix(element, matrix) {
     }
 }
 
+function print2d(M) {
+    for (let i = 0; i < M.length; i++) {
+        console.log(M[i].join(''));
+    }
+}
+
 function letterJsonToMatrix(json) {
     var matrix = [];
     matrix = addElementToMatrix(json, matrix);
     return matrix;
 }
 
-function test() {
+function test_ES_beauty() {
     const M1 = letterJsonToMatrix(letterJson);
     // for (let i = 0; i < M1.length; i++) {
     //     console.log(M1[i].join(''));
@@ -104,5 +110,13 @@ function test() {
     for (let i = 0; i < M3.length; i++) {
         console.log(M3[i].join(''));
     }
+}
+function test_C() {
+    const M1 = letterJsonToMatrix(require('./config/samples/C.json'));
+    print2d(M1);
+}
+function test() {
+    // test_ES_beauty();
+    test_C();
 }
 test();
