@@ -40,26 +40,53 @@ module.exports = {
             children: [
                 Object.assign(
                     firstDiag,
-                    { after: [
-                        {
-                            type: 'splice',
-                            column: -1,
-                        }
-                    ] }
+                    {
+                        after: [
+                            {
+                                type: 'splice',
+                                column: -1,
+                            }
+                        ]
+                    }
                 ),
                 Object.assign(
                     firstDiag,
-                    { after: [
+                    {
+                        after: [
+                            {
+                                type: 'mirror',
+                                mirrorBy: 'column',
+                            },
+                            {
+                                type: 'splice',
+                                column: 1,
+                            }
+                        ]
+                    }
+                ),
+            ],
+            after: [
+                {
+                    type: 'multi',
+                    steps: [
                         {
-                            type: 'mirror',
-                            mirrorBy: 'column',
+                            type: 'lensRange',
+                            rows: {
+                                type: 'fix',
+                                start: '3*N+1',
+                                end: '4*N,'
+                            },
+                            columns: {
+                                type: 'between-fill',
+                                fill: 'P',
+                            },
                         },
                         {
-                            type: 'splice',
-                            column: 1,
+                            type: 'set',
+                            fill: 'P2',
                         }
-                    ] }
-                ),
+                    ],
+                }
             ],
         }
     ],
