@@ -8,12 +8,26 @@ function processLengths(length) {
             return 3;
         case '5*N':
             return 15;
-            case '2*N':
-                return 6;
+        case '2*N':
+            return 6;
+        case '2*N-2':
+            return 4;
+        case '2':
+            return 2;
         default:
             return 3;
     }
 }
+
+function processFillTypes(fill) {
+    switch (fill) {
+        case 'P':
+            return '+';
+        default:
+            return '_';
+    }
+}
+
 
 function addElementToMatrix(element, matrix) {
     let { type } = element;
@@ -22,7 +36,7 @@ function addElementToMatrix(element, matrix) {
         return matrixOp.by({
             width: processLengths(width),
             height: processLengths(height),
-            fill,
+            fill: processFillTypes(fill),
         });
     } else if (type == 'row') {
         const { height } = element;
@@ -47,7 +61,27 @@ function addElementToMatrix(element, matrix) {
         // add tempResult to main matrix
         return matrixOp(matrix).addMatrixRight(tempResult).toMatrix();
     } else if (type == 'column') {
-        return matrix;
+        const { width } = element;
+        // process col
+        // // initial code
+        // // process childern via same function
+        var tempResult = [];
+        for (let i = 0; i < element.children.length; i++) {
+            const childElement = element.children[i];
+            const childMat = addElementToMatrix(
+                Object.assign(
+                    {},
+                    childElement,
+                    { width },
+                ), []);
+            // console.log('childMat', childMat);
+            tempResult = matrixOp(tempResult)
+                .addMatrixDown(childMat)
+                .toMatrix();
+            // console.log(tempResult);
+        }
+        // add tempResult to main matrix
+        return matrixOp(matrix).addMatrixRight(tempResult).toMatrix();
     } else if (type == 'overlap') {
         return matrix;
     }
@@ -60,6 +94,9 @@ function letterJsonToMatrix(json) {
 }
 
 function test() {
-    console.log(letterJsonToMatrix(letterJson));
+    const M = letterJsonToMatrix(letterJson);
+    for (let i = 0; i < M.length; i++) {
+        console.log(M[i].join(''));
+    }
 }
 test();
