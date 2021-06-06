@@ -1,4 +1,5 @@
 const matrixOp = require('./matrixOp');
+const { addPadding } = require('./beautify');
 
 const letterJson = require('./config/samples/E.json');
 const letterJson_S = require('./config/samples/S.json');
@@ -25,9 +26,9 @@ function processLengths(length) {
 function processFillTypes(fill) {
     switch (fill) {
         case 'P':
-            return '+';
+            return '#';
         default:
-            return '_';
+            return '.';
     }
 }
 
@@ -105,14 +106,15 @@ function test() {
     // for (let i = 0; i < M2.length; i++) {
     //     console.log(M2[i].join(''));
     // }
-    const M3 = matrixOp(M1)
+    let M3 = matrixOp(M1)
         .addMatrixRight(matrixOp.by({
-            width: 3,
+            width: 9,
             height: 15,
-            fill: '_',
+            fill: '.',
         }))
         .addMatrixRight(M2)
         .toMatrix();
+    M3 = addPadding(M3, { size: 6, fill: '.' });
     for (let i = 0; i < M3.length; i++) {
         console.log(M3[i].join(''));
     }
