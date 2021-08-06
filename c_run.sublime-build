@@ -1,0 +1,4 @@
+// {
+// 	"cmd": ["gcc", "$file_name", "-o", "${file_base_name}", "&&", "./${file_base_name}"],
+// 	"file_patterns": ["*.c"]
+// }

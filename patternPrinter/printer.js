@@ -5,7 +5,7 @@ const letterJson = require('./config/samples/E.json');
 const letterJson_S = require('./config/samples/S.json');
 
 function processLengths(length) {
-    const N = 4; // used inside eval
+    const N = 5; // used inside eval
     return eval(length);
 }
 
@@ -14,7 +14,7 @@ function processFillTypes(fill) {
         case 'P':
             return '#';
         default:
-            return '.';
+            return ' ';
     }
 }
 
@@ -100,13 +100,13 @@ function test_ES_beauty() {
     // }
     let M3 = matrixOp(M1)
         .addMatrixRight(matrixOp.by({
-            width: 9,
-            height: 20,
-            fill: '.',
+            width: 5,
+            height: 25,
+            fill: ' ',
         }))
         .addMatrixRight(M2)
         .toMatrix();
-    M3 = addPadding(M3, { size: 2, fill: '.' });
+    M3 = addPadding(M3, { size: 3, fill: ' ' });
     print2d(M3);
 }
 function test_C() {
