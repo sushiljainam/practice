@@ -114,9 +114,9 @@ function sqrtVedic(n) {
 
             let qut = Math.floor(curPart / divisor)
             carry = curPart % divisor
-            while (qut > 9) {
-                qut--
-                carry += divisor
+            if (qut > 9) {
+                carry += (qut - 9) * divisor
+                qut = 9
             }
             console.log('divisor', divisor, curPart, qut, carry)
             ans[1].push(qut)
@@ -155,6 +155,10 @@ function sqrtVedic(n) {
             if (divideTotal > 0) {
                 let qut = Math.floor(temp / divisor)
                 carry = temp % divisor
+                if (qut > 9) {
+                    carry += (qut - 9) * divisor
+                    qut = 9
+                }
                 ans[1].push(qut)
                 dwlist.l = [dwlist.n]
                 dwlist.n = dwlist.n * 10 + qut
@@ -172,14 +176,16 @@ function sqrtVedic(n) {
             continue
         }
     }
-    return Number(ans.flat().join(''))
+    ans = Number(ans.flat().join(''))
+    console.log('FINAL ans', ans)
+    return ans
 }
 
 // sqrtVedic(389376)
 // sqrtVedic(12321)
 // sqrtVedic(21316)
 // sqrtVedic(976144)
-// sqrtVedic(10201)
+// sqrtVedic(22201)
 // sqrtVedic(11664)
 // sqrtVedic(11881)
 // sqrtVedic(350464)
@@ -196,47 +202,47 @@ console.log(test)
 
 let tests = []
     .concat([
-        [12100, 110, 110, true],
-        [12321, 111, 111, true],
-        [14884, 122, 122, true],
-        [14884, 122, 122, true],
-        [21316, 146, 146, true],
-        [22201, 1412, 149, false],
-        [30276, 174, 174, true],
-        [30976, 1710, 176, false],
-        [36864, 192, 192, true],
-        [53361, 231, 231, true],
-        [57121, 2310, 239, false],
-        [78400, 280, 280, true],
-        [83521, 2811, 289, false],
-        [98596, 314, 314, true],
-        [116281, 341, 341, true],
-        [120409, 347, 347, true],
-        [132496, 364, 364, true],
-        [159201, 3911, 399, false],
-        [164836, 406, 406, true],
-        [220900, 470, 470, true],
-        [301401, 549, 549, true],
-        [304704, 552, 552, true],
-        [350464, 592, 592, true],
-        [356409, 597, 597, true],
-        [398161, 631, 631, true],
-        [407044, 638, 638, true],
-        [467856, 684, 684, true],
-        [515524, 718, 718, true],
-        [541696, 736, 736, true],
-        [558009, 747, 747, true],
-        [568516, 754, 754, true],
-        [582169, 763, 763, true],
-        [651249, 807, 807, true],
-        [746496, 864, 864, true],
-        [758641, 871, 871, true],
-        [840889, 917, 917, true],
-        [879844, 938, 938, true],
-        [883600, 940, 940, true],
-        [960400, 980, 980, true],
-        [976144, 988, 988, true]
-    ]).map(ti => {
+        [ 12100, 110, 110, true ],
+        [ 12321, 111, 111, true ],
+        [ 14884, 122, 122, true ],
+        [ 14884, 122, 122, true ],
+        [ 21316, 146, 146, true ],
+        [ 22201, 149, 149, true ],
+        [ 30276, 174, 174, true ],
+        [ 30976, 176, 176, true ],
+        [ 36864, 192, 192, true ],
+        [ 53361, 231, 231, true ],
+        [ 57121, 239, 239, true ],
+        [ 78400, 280, 280, true ],
+        [ 83521, 289, 289, true ],
+        [ 98596, 314, 314, true ],
+        [ 116281, 341, 341, true ],
+        [ 120409, 347, 347, true ],
+        [ 132496, 364, 364, true ],
+        [ 159201, 399, 399, true ],
+        [ 164836, 406, 406, true ],
+        [ 220900, 470, 470, true ],
+        [ 301401, 549, 549, true ],
+        [ 304704, 552, 552, true ],
+        [ 350464, 592, 592, true ],
+        [ 356409, 597, 597, true ],
+        [ 398161, 631, 631, true ],
+        [ 407044, 638, 638, true ],
+        [ 467856, 684, 684, true ],
+        [ 515524, 718, 718, true ],
+        [ 541696, 736, 736, true ],
+        [ 558009, 747, 747, true ],
+        [ 568516, 754, 754, true ],
+        [ 582169, 763, 763, true ],
+        [ 651249, 807, 807, true ],
+        [ 746496, 864, 864, true ],
+        [ 758641, 871, 871, true ],
+        [ 840889, 917, 917, true ],
+        [ 879844, 938, 938, true ],
+        [ 883600, 940, 940, true ],
+        [ 960400, 980, 980, true ],
+        [ 976144, 988, 988, true ]
+      ]).map(ti => {
         let tsi = [ti[0], sqrtVedic(ti[0]), ti[2]]
         test.push([...tsi, tsi[1] === tsi[2]])
     })
@@ -244,3 +250,5 @@ let tests = []
 console.log(test.sort((a, b) => a[2] - b[2]))
 // 15 falseTotal
 // 14 falseTotal
+// 5 falseTotal
+// 0 falseTotal
